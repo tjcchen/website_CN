@@ -8,6 +8,7 @@ const server = (port) => {
 
   // static target folder
   app.use(express.static('src'));
+  app.use(express.static('asset'));
 
   // routers
   app.get('/', (req, res) => {
