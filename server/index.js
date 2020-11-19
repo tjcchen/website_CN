@@ -35,7 +35,7 @@ const server = (port) => {
     };
 
     // allow cors at server: http://192.168.199.155:5000
-    res.header('Access-Control-Allow-Origin', 'http://192.168.199.155:5000');
+    res.header('Access-Control-Allow-Origin', '*');
 
     // allow other server send cookie to this server
     res.header('Access-Control-Allow-Credentials', true);
