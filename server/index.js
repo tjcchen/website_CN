@@ -29,18 +29,35 @@ const server = (port) => {
 
   // cors test
   app.get('/cors', (req, res) => {
+    // console.log('check params: ');
+    // console.log(req.query.name);
+    // console.log(req.query.password);
+
+    console.log(req.cookies);
+
     const retObj = {
-      name: 'cors',
+      name: 'cors-with-credentials',
       data: [6, 5, 4, 3, 2, 1]
     };
 
     // allow cors at server: http://192.168.199.155:5000
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
 
     // allow other server send cookie to this server
     res.header('Access-Control-Allow-Credentials', true);
+    // res.header('Access-Control-Allow-Headers', 'content-type');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
 
-    res.status(200).send(retObj);
+    res.status(200)
+       .cookie('authKey', 'hello world!', {
+         expires: new Date(Date.now() + 900000),
+         // httpOnly: true,
+         path: '/',
+         sameSite: 'None',
+         // need https support to allow cross site cookie sharing
+         secure: true
+        })
+       .send(retObj);
   });
 
   app.listen(port, () => {
