@@ -31,7 +31,7 @@ const server = (port) => {
     console.log('preflight request');
 
     res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     res.status(204).send();
@@ -45,7 +45,7 @@ const server = (port) => {
     };
 
     // allow cors at server: http://192.168.43.103:5000/ ; http://192.168.199.155:5000
-    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1');
 
     // allow other server send cookie to this server
     res.header('Access-Control-Allow-Credentials', true);
@@ -67,7 +67,7 @@ const server = (port) => {
     };
 
     // allow cors at server: http://192.168.199.155:5000
-    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1');
 
     // allow other server send cookie to this server
     res.header('Access-Control-Allow-Credentials', true);
