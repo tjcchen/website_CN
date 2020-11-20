@@ -27,13 +27,39 @@ const server = (port) => {
     res.status(200).jsonp(jsonpObj);
   });
 
-  // cors test
+  app.options('/cors', (req, res) => {
+    console.log('preflight request');
+
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    res.status(204).send();
+  });
+
+  // cors test - get request
   app.get('/cors', (req, res) => {
+    const retObj = {
+      name: 'cors-with-credentials',
+      data: [6, 5, 4, 3, 2, 1]
+    };
+
+    // allow cors at server: http://192.168.43.103:5000/ ; http://192.168.199.155:5000
+    res.header('Access-Control-Allow-Origin', 'http://192.168.43.103:5000');
+
+    // allow other server send cookie to this server
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', 'content-type');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+
+    res.status(200).send(retObj);
+  });
+
+  // cors test - post request
+  app.post('/cors', (req, res) => {
     // console.log('check params: ');
     // console.log(req.query.name);
     // console.log(req.query.password);
-
-    console.log(req.cookies);
 
     const retObj = {
       name: 'cors-with-credentials',
@@ -45,8 +71,8 @@ const server = (port) => {
 
     // allow other server send cookie to this server
     res.header('Access-Control-Allow-Credentials', true);
-    // res.header('Access-Control-Allow-Headers', 'content-type');
-    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'content-type');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
 
     res.status(200)
        .cookie('authKey', 'hello world!', {
