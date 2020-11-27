@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const template = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'utf-8');
+const bodyParser = require('body-parser');
 
 const server = (port) => {
   const app = express();
@@ -9,6 +10,8 @@ const server = (port) => {
   // static target folder
   app.use(express.static('src'));
   app.use(express.static('asset'));
+  app.use(bodyParser.json()); // for parsing application/json
+  app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
   // routers
   app.get('/', (req, res) => {
@@ -25,6 +28,18 @@ const server = (port) => {
     };
 
     res.status(200).jsonp(jsonpObj);
+  });
+
+  // post request
+  app.post('/post', (req, res) => {
+    const response =  {
+      status: 200,
+      name: req.body.name,
+      occupation: req.body.occupation,
+      timestamp: new Date().getTime()
+    };
+
+    res.status(200).json(response);
   });
 
   // preflight request of /cors
