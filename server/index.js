@@ -32,6 +32,8 @@ const server = (port) => {
 
   // post request
   app.post('/post', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+
     const response =  {
       status: 200,
       name: req.body.name,
