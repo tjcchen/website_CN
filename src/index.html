@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="./love.png" type="image/x-icon">
-<title>Chen's Code Repository</title>
+<title>小陈的代码仓库</title>
 <style type="text/css">
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -12,7 +12,8 @@ body {
   min-height: 100vh;
   margin: 0;
   background-color: #291642;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-size: 100%;
   color: #fff;
   overflow: hidden;
@@ -82,6 +83,15 @@ span {
   width: 50px;
   animation: pulse 1s ease infinite;
 }
+.footer {
+  position: absolute;
+  bottom: 3px;
+  text-align: center;
+}
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.3); }
@@ -105,8 +115,11 @@ span {
 <body>
 <div class="flex__container">
   <div class="flex__item">
-    <div>Chen's Code Repository</div>
+    <div>小陈的代码仓库</div>
   </div>
+</div>
+<div class="footer">
+  <a href="http://beian.miit.gov.cn/" target="_blank">津ICP备2020009047号</a>
 </div>
 </body>
 </html>
