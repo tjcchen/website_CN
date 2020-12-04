@@ -1,7 +1,7 @@
 {
-  "name": "ChenLoveFang",
+  "name": "website",
   "version": "1.0.0",
-  "description": "<!-- ## Welcome to GitHub Pages",
+  "description": "Chen's code repository",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
