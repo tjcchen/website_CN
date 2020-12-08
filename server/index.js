@@ -15,9 +15,12 @@ const server = (port) => {
 
   // session
   app.use(session({
-    secret: 'keyboard cat',
+    secret: 'Andy Chen',
     resave: false,
     saveUninitialized: true
+    // genid: function(req) {
+    //   return genuuid(); // use UUIDs for session IDs, the default value is 'connect.sid'
+    // },
   }));
   app.use((req, res, next) => {
     if (!req.session.views) {
@@ -41,7 +44,7 @@ const server = (port) => {
 
   // view count page
   app.get('/views', (req, res, next) => {
-    res.send('You have viewed this page ' + req.session.views['/views'] + ' times!');
+    res.send('JSESSIONID: '+ req.session.id +'. You have viewed this page ' + req.session.views['/views'] + ' times!');
   });
 
   // jsonp test
