@@ -1,8 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const template = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'utf-8');
+const express    = require('express');
+const path       = require('path');
+const fs         = require('fs');
 const bodyParser = require('body-parser');
+const parseurl   = require('parseurl');
+const session    = require('express-session');
+const template   = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'utf-8');
 
 const server = (port) => {
   const app = express();
@@ -10,6 +12,23 @@ const server = (port) => {
   // static target folder
   app.use(express.static('src'));
   app.use(express.static('asset'));
+
+  // session
+  app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+  }));
+  app.use((req, res, next) => {
+    if (!req.session.views) {
+      req.session.views = {};
+    }
+    const pathname = parseurl(req).pathname; // get the url pathname
+    req.session.views[pathname] = (req.session.views[pathname] || 0) + 1; // count the views
+    next();
+  });
+
+  // for retrieving data in post request
   app.use(bodyParser.json()); // for parsing application/json
   app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -18,6 +37,11 @@ const server = (port) => {
     const html = template;
 
     res.status(200).send(html);
+  });
+
+  // view count page
+  app.get('/views', (req, res, next) => {
+    res.send('You have viewed this page ' + req.session.views['/views'] + ' times!');
   });
 
   // jsonp test
