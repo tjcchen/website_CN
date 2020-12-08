@@ -4,7 +4,8 @@
   "description": "Chen's code repository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "standard": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "express-session": "^1.17.1",
-    "parseurl": "^1.3.3"
+    "parseurl": "^1.3.3",
+    "standard": "^16.0.3"
   }
 }
