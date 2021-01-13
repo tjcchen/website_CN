@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "standard": "standard --fix"
+    "standard": "standard --fix",
+    "serve": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "viewport-units-buggyfill": "^0.6.2"
   },
   "devDependencies": {
     "express-session": "^1.17.1",
