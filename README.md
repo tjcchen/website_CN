@@ -1,7 +1,12 @@
-## website
-This simple personal website is made by Andy. This repo will be migrating to Spring Boot Web project in the near future.
+## Website
+This simple personal website is made by Andy.
 
-## start the http/https service
+## Website is available at
+https: https://www.tjcchen.cn
+
+http( will be redirected to https ): http://www.tjcchen.cn
+
+## Start the http/https service
 ```bash
 # pm2 start
 pm2 --name https-server start npm -- start
@@ -34,11 +39,11 @@ netstat -lnp
 netstat -lnp | grep 443
 ```
 
-## links
+## Links
 Be sure to configure your security group 443 after adding certs: https://ecs.console.aliyun.com/securityGroupDetail/region/cn-beijing/groupId/sg-2zebrtqj5svzhl79grtg/detail/intranetIngress
 
-## contact
+## Contact
 Email: tjcchen.engineer@gmail.com
 
-## license
+## License
 This project is licensed under the terms of the MIT License.
