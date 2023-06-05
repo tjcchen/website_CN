@@ -1,12 +1,13 @@
 {
   "name": "website",
   "version": "1.0.0",
-  "description": "Chen's code repository",
+  "description": "Andy Chen's code repository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "standard": "standard --fix",
-    "serve": "node server/index.js"
+    "start": "node server/index.js",
+    "serve": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "viewport-units-buggyfill": "^0.6.2"
   },
