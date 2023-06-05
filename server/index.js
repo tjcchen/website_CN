@@ -8,13 +8,22 @@ const template  = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'ut
 
 let server = {};
 
+// development cert config
 server.httpsOptions = {
   key: fs.readFileSync(path.join(__dirname, '../https/key.pem')),
   cert: fs.readFileSync(path.join(__dirname, '../https/cert.pem')),
 };
 
+// production cert config
+// server.httpsOptions = {
+//   key: fs.readFileSync('/ssl/cert.key', 'utf-8'),
+//   cert: fs.readFileSync('/ssl/cert.pem', 'utf-8'),
+//   ca: fs.readFileSync('/ssl/cert.cer', 'utf-8')
+// };
+
 server.httpServer = http.createServer((req, res) => {
-  server.universalServer(req, res);
+  res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+  res.end();
 });
 
 server.httpsServer = https.createServer(server.httpsOptions, (req, res) => {
