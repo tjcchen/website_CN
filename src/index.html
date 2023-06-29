@@ -89,6 +89,23 @@ span {
   width: 50px;
   animation: pulse 1s ease infinite;
 }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  padding: 0 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header a {
+  text-decoration: none;
+  color: #fff;
+}
 .footer {
   text-align: center;
   position: absolute;
@@ -121,10 +138,19 @@ span {
     block-size: 16vh;
     min-inline-size: 300px;
   }
+  .header {
+    padding: 0 45px;
+  }
 }
 </style>
 </head>
 <body>
+<div class="header">
+  <div class="header__logo">TJCCHEN.CN</div>
+  <div class="header__language">
+    <a href="https://www.tjcchen.com">EN / CN</a>
+  </div>
+</div>
 <div class="flex__container">
   <div class="flex__item">
     <a class="flex__item__link" href="https://github.com/tjcchen">
