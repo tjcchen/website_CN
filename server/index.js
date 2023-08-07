@@ -1,10 +1,12 @@
-const http      = require('http');
-const https     = require('https');
-const path      = require('path');
-const fs        = require('fs');
-const httpPort  = 80;
-const httpsPort = 443;
-const template  = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'utf-8');
+const http       = require('http');
+const https      = require('https');
+const path       = require('path');
+const fs         = require('fs');
+const url        = require('url');
+const httpPort   = 80;
+const httpsPort  = 443;
+const homeTpl    = fs.readFileSync(path.join(__dirname, '../src/index.html'), 'utf-8');
+const privacyTpl = fs.readFileSync(path.join(__dirname, '../src/privacy.html'), 'utf-8');
 
 let server = {};
 
@@ -31,7 +33,20 @@ server.httpsServer = https.createServer(server.httpsOptions, (req, res) => {
 });
 
 server.universalServer = (req, res) => {
-  const html = template;
+  // Get the url and parse it
+  let parsedUrl = url.parse(req.url, true);
+
+  // Get the path
+  let path = parsedUrl.pathname;
+  let trimmedPath = path.replace(/^\/+|\/+$/g, '');
+  let html = '';
+
+  if (trimmedPath == "" || trimmedPath == "index.html") { // home page
+    html = homeTpl;
+  } else if (trimmedPath == "privacy.html") { // privacy page
+    html = privacyTpl;
+  }
+
   res.writeHead(200).end(html);
 };
 
