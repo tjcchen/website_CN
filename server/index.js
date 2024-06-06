@@ -18,9 +18,9 @@ server.httpsOptions = {
 
 // production cert config
 // server.httpsOptions = {
-//   key: fs.readFileSync('/ssl/cert.key', 'utf-8'),
-//   cert: fs.readFileSync('/ssl/cert.pem', 'utf-8'),
-//   ca: fs.readFileSync('/ssl/cert.cer', 'utf-8')
+//   key: fs.readFileSync('/ssl2/cert.key', 'utf-8'),
+//   cert: fs.readFileSync('/ssl2/cert.pem', 'utf-8'),
+//   ca: fs.readFileSync('/ssl2/cert.cer', 'utf-8')
 // };
 
 server.httpServer = http.createServer((req, res) => {
