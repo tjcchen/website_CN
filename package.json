@@ -24,7 +24,7 @@
     "body-parser": "^1.20.1",
     "express": "^4.21.2",
     "fs": "^0.0.1-security",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.1.10",
     "path": "^0.12.7",
     "viewport-units-buggyfill": "^0.6.2"
   },
